@@ -15,11 +15,23 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            rigibody.linearVelocity = new Vector2(-2f, 0f);
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if(worldPos.x < 0)
+            {
+                rigibody.AddForce(Vector2.left * movespeed);
+            }
+            else
+            {
+                rigibody.AddForce(Vector2.right * movespeed);
+            }
+            //rigibody.linearVelocity = new Vector2(5, 0);
+
+
 
         }
         else
         {
+            rigibody.linearVelocity = Vector2.zero;
         }
     }
 }
