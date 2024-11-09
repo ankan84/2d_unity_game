@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -32,6 +33,16 @@ public class Player : MonoBehaviour
         else
         {
             rigibody.linearVelocity = Vector2.zero;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collided with: " + collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "block")
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
