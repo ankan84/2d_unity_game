@@ -1,0 +1,1 @@
+C:\Users\roysa\OneDrive\Desktop\unity\2d_unity_game\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\3m704l4a\obj\arm64-v8a

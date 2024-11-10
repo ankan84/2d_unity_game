@@ -1,11 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
      public Vector2 spawnPosition;
      public GameObject prefabToSpawn;
-     private float score=0;
+     private int score=0;
+     public TextMeshProUGUI textMeshPro;
     void Start()
     {
         // SpawnObject();
@@ -26,8 +28,8 @@ public class gameManager : MonoBehaviour
             Random.Range(-spawnPosition.x , spawnPosition.x), spawnPosition.y
         );
         score += 1;
-        Debug.Log("Score================: " + score);
         // Instantiate the prefab at the calculated position
+        textMeshPro.text = score.ToString();
         Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
     }
 }
