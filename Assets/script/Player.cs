@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float movespeed;
+    public float movespeed= 5000f;
     Rigidbody2D rigibody;
     void Start()
     {
@@ -19,13 +19,15 @@ public class Player : MonoBehaviour
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if(worldPos.x < 0)
             {
-                rigibody.AddForce(Vector2.left * movespeed);
+                // rigibody.AddForce(Vector3.left *( movespeed *1.5f));
+                 rigibody.linearVelocity = new Vector2(-5, 0);
             }
             else
             {
-                rigibody.AddForce(Vector2.right * movespeed);
+                // rigibody.AddForce(Vector3.right *( movespeed*1.5f));
+                 rigibody.linearVelocity = new Vector2(5, 0);
             }
-            //rigibody.linearVelocity = new Vector2(5, 0);
+            // rigibody.linearVelocity = new Vector2(5, 0);
 
 
 

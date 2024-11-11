@@ -8,17 +8,29 @@ public class gameManager : MonoBehaviour
      public GameObject prefabToSpawn;
      private int score=0;
      public TextMeshProUGUI textMeshPro;
+     public GameObject tap_to_start;
+     bool start_game = false;
     void Start()
     {
         // SpawnObject();
         // this.score = 0;
-        InvokeRepeating("SpawnObject", 2f, 1f);
+        tap_to_start.SetActive(true);
+        start_game = false;
+        textMeshPro.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //  SpawnObject();
+        if(Input.GetMouseButtonDown(0) && start_game == false) {
+            start_game = true;
+            if(start_game == true){
+                 textMeshPro.enabled = true;
+                InvokeRepeating("SpawnObject", 2f, 1f);
+                tap_to_start.SetActive(false);
+            }
+
+        }
     }
 
     void SpawnObject()
@@ -27,9 +39,13 @@ public class gameManager : MonoBehaviour
         Vector3 randomPosition = new Vector2(
             Random.Range(-spawnPosition.x , spawnPosition.x), spawnPosition.y
         );
+       
+
+        if(score <= 100000){
+            textMeshPro.text = score.ToString();
+        }
         score += 1;
         // Instantiate the prefab at the calculated position
-        textMeshPro.text = score.ToString();
         Instantiate(prefabToSpawn, randomPosition, Quaternion.identity);
     }
 }
